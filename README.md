@@ -175,4 +175,14 @@ This build running on MacOs X 10.13.4
         end;
     ```
 
+# Enable Trackpad
+    1. Boot into recovery partition
+        # Find your recovery partition on bootloader
+        # Open `terminal`
+        
+    2. Remove conflicting kexts
+        # rm -r AppleIntelLpssI2C.kext
+        # rm -r AppleIntelLpssI2CController.kext
+        # rm -r AppleHPM.kext
+
 
