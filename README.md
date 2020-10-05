@@ -40,7 +40,8 @@ Users with VivoBooks with only the Intel UHD 620 and no dedicated Nvidia dGPU ar
 2. Apple **Safe Sleep** ("***Hibernate***") doesn't work and has been disabled. In any case, additionally apply "*post macOS Installations/set hibernatemode to 0*"
 3. **Battery life** isn't great to begin with, not even in Windows. On some VivoBooks it seems to be even worse in macOS. A S510UQ user ([Quhuy0410](https://www.tonymacx86.com/members/quhuy0410.2255980/)) claims longer battery life with model MacBookAir8,2 chosen in the SMBIOS section. Feel free to experiment. Mind that CPUFriendDataProvider.kext ***must*** match your chosen model. For that sake, navigate to "*post macOS Installations/[Optional]/change CPU Performance*".
 4. **Sleep**: in macOS, the VivoBook needs appr. 15 secs. to power down completely. You will hear the fan spin up again before the system finally settles (power LED on the left blinking white, indicating sleep mode).
-4. **Sound quality** isn't great because the speakers are mediocre in general, and to make things even worse, Asus placed them into the bottom of the case, mostly facing down. For tips to improve the sound, please look at "[docs/BetterSound.html](https://htmlpreview.github.io/?https://github.com/tctien342/Asus-Vivobook-S510UA-Hackintosh/blob/master/docs/BetterSound.html)"
+5. **Sound quality** isn't great because the speakers are mediocre in general, and to make things even worse, Asus placed them into the bottom of the case, mostly facing down. For tips to improve the sound, please look at "[docs/BetterSound.html](https://htmlpreview.github.io/?https://github.com/tctien342/Asus-Vivobook-S510UA-Hackintosh/blob/master/docs/BetterSound.html)"
+
 
 # Tools to use
 * Your favorite hackintosh USB installer maker (e.g. [UniBeast](https://www.unibeast.com/))
@@ -75,14 +76,16 @@ Users with VivoBooks with only the Intel UHD 620 and no dedicated Nvidia dGPU ar
 2. Recommended: **install all kexts** from EFI/CLOVER/kexts/Other (and any kext from the subfolder matching your macOS version) **to L/E (/Library/Extensions)** with Hackintool (icon 'Tools' in its window bar, first kext icon in the bottom bar, install kexts, final kext icon in the bottom bar 'Rebuild KextCache and repair Permissions'), reboot
 3. Now trackpad and audio input should work. Next you need to **fill the EFI partition on your internal hard disk with the Clover EFI folder**. You can use Clover Configurator to mount your System EFI. Next back up the existing System EFI folder and copy this release's EFI folder to your system EFI partition
 4. Run Clover Configurator, click onto **SMBIOS** in the side bar on the left. Under 'System', next to 'Serial Number', click onto the 'Generate New' button. That will change both, system and board serial number, which should hopefully enable you to use iCloud
-5. **Reboot and ENJOY :)**
+5.For Vivobook with Dgpu like MX150: Add -disablegfxfirmware to config.plist(EFI) using Clover configurator
+6. **Reboot and ENJOY :)**
 
 # _ATTENTION - be careful with Updates_!
 **Be especially mindful with VirtualSMC Updates!** If the versions of VirtualSMC, accompanying plugin kexts (**SMCProcessor**, **SMCBatteryManager**) and corresponding **efi driver** (EFI/CLOVER/drivers/UEFI/**VirtualSmc.efi**) do not match, touchpad and battery issues may arise! Please make sure you download the most recent stable release of the **complete** SMC package [from its repo](https://github.com/acidanthera/VirtualSMC/releases) and replace ***each*** existing file with the matching new one.
 
 # Wi-Fi Replacement
 
-1. Replace your existing Wi-Fi/ Bluetooth card with either a **Fenvi BCM94360NG** (read [whatnameisit's findings about it](https://github.com/tctien342/Asus-Vivobook-S510UA-Hackintosh/issues/46#issuecomment-592947028) under 2.), a **DW1560** (most wide-spread and best supported) or a FRU 04X6020 (or a different kind if you can find a better one)
+1. Replace your existing Wi-Fi/ Bluetooth card with either a **Fenvi BCM94360NG** (read [whatnameisit's findings about it](https://github.com/tctien342/Asus-Vivobook-S510UA-Hackintosh/issues/46#issuecomment-592947028) under 2.), a **DW1560** (most wide-spread and best supported) or a FRU 04X6020 (or a different kind if you can find a better one) or
+to replace with Tp Link WN725 USB wifi(Drivers at https://www.tp-link.com/us/support/download/tl-wn725n/#Driver)
 2. Follow the instructions in "[post macOS Installations/Bluetooth AFTER card replacement/Wi-Fi & Bluetooth ReadMe.md](https://github.com/tctien342/Asus-Vivobook-S510UA-High-Sierra-10.13-Hackintosh/blob/master/post%20macOS%20Installations/Bluetooth%20AFTER%20card%20replacement/Wi-Fi%20%26%20Bluetooth%20ReadMe.md)"
 3. Rebuild kext cache and repair L/E permissions, e.g. with Kext Updater, Hackintool etc.
 4. Reboot and **ENJOY even more** :)
